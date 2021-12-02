@@ -1,6 +1,8 @@
 import sys
 import os
+import time
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
 
@@ -35,22 +37,25 @@ def convert_notion_to_anki():
 
     # Go to the web page and edit the options to enable avocado and some
 
-    driver.find_element_by_xpath('//*[@id="root"]/div/div/div/div[1]/div/a').click()
-    driver.find_element_by_xpath('//*[@id="root"]/div/div/div/div[2]/div/div[2]/section/div/div[2]/div/label[6]').click()
-    driver.find_element_by_xpath('//*[@id="root"]/div/div/div/div[2]/div/div[2]/div[2]/button[1]').click()
-    driver.find_element_by_xpath('//*[@id="root"]/div/div/div/div[2]/form/div/div/div/div/label/span').click()
+    driver.find_element(By.XPATH, '//*[@id="root"]/div/div/div/div[1]/div/a').click()
+    driver.find_element(By.XPATH, '//*[@id="root"]/div/div/div/div[2]/div/div[2]/section/div/div[2]/div/label[6]').click()
+    driver.find_element(By.XPATH, '//*[@id="root"]/div/div/div/div[2]/div/div[2]/div[2]/button[1]').click()
+    file_input = driver.find_element(By.NAME, "pakker")
 
     #loop throug the items to be uploaded, excluding the "Exported folder", upload them to the site
     for item in directory:
         print(item)
-        if item == "Exported":
+        if item == "Exported":  
             print("This is the 'Exported' folder, NO TRESPASSING ")
             pass
         else:
             print("This is a not the 'Exported' folder, Carry on")
-            #upload them to the site 
-
-
+            print("The path is", f"C:\\Users\\emman\\Documents\\To Anki\\{item}")
+            print(f"C:\\Users\\emman\\Documents\\To Anki\\{item}")
+            file_input.send_keys(f"C:\\Users\\emman\\Documents\\To Anki\\{item}")
+        
+    time.sleep(10)
+    driver.find_element(By.CSS_SELECTOR, "#root > div > div > div > div.container > form > div > div > a").click()
 
 # print(check_for_new_decks())
 
