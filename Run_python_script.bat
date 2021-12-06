@@ -1,0 +1,1 @@
+"C:\Users\emman\AppData\Local\Programs\Python\Python310\python.exe" "C:\Users\emman\Projects\notion_anki_auto\notion_anki_auto.py"

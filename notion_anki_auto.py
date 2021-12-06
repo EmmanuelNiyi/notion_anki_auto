@@ -4,6 +4,7 @@ import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+from apscheduler.schedulers.background import BackgroundScheduler
 
 
 driver = webdriver.Edge(executable_path='C:/Users/emman/Desktop/stuff/edgedriver_win64/msedgedriver.exe')
@@ -63,3 +64,29 @@ if check_for_new_decks() == "Empty":
     print("No new decks")
 else:
     convert_notion_to_anki()
+    print("Converted")
+
+
+# def check_and_convert():
+#     if check_for_new_decks() == "Empty":
+#         print("No new decks")
+#     else:
+#         convert_notion_to_anki()
+#         print("Converted")
+
+# def scheduler_test():
+#     print("Scheduler Working")
+
+
+# def start():
+#     scheduler = BackgroundScheduler()
+#     """TESTING"""
+#     scheduler.add_job(scheduler_test, 'cron', hour='12,14,17',
+#                       minute='0,5,10,15,20,25,34,35,38', )
+
+#     """chron not assigned"""
+
+#     """WORKING"""
+#     # Runs in 1:00am everyday
+#     scheduler.add_job(check_and_convert, 'interval', minutes=30)
+#     print("Scheduler started...", file=sys.stdout)
