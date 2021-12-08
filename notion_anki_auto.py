@@ -7,9 +7,7 @@ from selenium.webdriver.common.keys import Keys
 from apscheduler.schedulers.background import BackgroundScheduler
 
 
-driver = webdriver.Edge(executable_path='C:/Users/emman/Desktop/stuff/edgedriver_win64/msedgedriver.exe')
-driver.get("https://2anki.net/upload")
-driver.maximize_window()
+
 
 path ="C:\\Users\\emman\\Documents\\To Anki"
 directory= os.listdir(path) 
@@ -63,6 +61,11 @@ def convert_notion_to_anki():
 if check_for_new_decks() == "Empty":
     print("No new decks")
 else:
+
+    driver = webdriver.Edge(executable_path='C:/Users/emman/Desktop/stuff/edgedriver_win64/msedgedriver.exe')
+    driver.get("https://2anki.net/upload")
+    driver.maximize_window()
+
     convert_notion_to_anki()
     print("Converted")
 
